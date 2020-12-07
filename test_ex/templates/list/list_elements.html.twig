@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ListController!{% endblock %}
+
+{% block body %}
+
+    
+    <table style="width: 80vw; margin-left:0vw;">
+        <tr class="table-active"  >
+        <th scope="col" style="text-align: center; font-size: 5vh;">Name</th>
+        <th scope="col" style="text-align: center; font-size: 5vh;">email</th>
+        <th scope="col" style="text-align: center; font-size: 5vh;">Address </th>
+        <th scope="col" style="text-align: center; font-size: 5vh;">Country</th>
+        </tr>
+        {% for user in users %}
+            <tr class="table-light" >
+                <td style="text-align: center;"><h3>{{ user.name }}</h3></td>
+                <td style="text-align: center;"><h4>{{ user.email }}</h4></td>
+                {% for addres in address %}
+                    {% if addres.id == user.address_id %}
+                         <td style="text-align: center;"><h5>{{ addres.street }} {{ addres.number }}</h5></td>
+                         <td style="text-align: center;"><h6>{{ addres.city }}</h6></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="btn-group" role="group" aria-label="Basic example" style="width: 80vw; margin-left:0vw;">
+        <button type="button" class="btn btn-secondary">Left</button>
+        <button type="button" class="btn btn-secondary">Right</button>
+    </div>
+
+{% endblock %}
